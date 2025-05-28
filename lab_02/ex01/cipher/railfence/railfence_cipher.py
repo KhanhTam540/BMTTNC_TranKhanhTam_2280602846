@@ -6,13 +6,15 @@ class RailFenceCipher:
         rails = [[] for _ in range(num_rails)]
         rail_index = 0
         direction = 1  # 1: down, -1: up
+
         for char in plain_text:
             rails[rail_index].append(char)
             if rail_index == 0:
                 direction = 1
             elif rail_index == num_rails - 1:
                 direction = -1
-                rail_index += direction
+            rail_index += direction
+
         cipher_text = ''.join(''.join(rail) for rail in rails)
         return cipher_text
 

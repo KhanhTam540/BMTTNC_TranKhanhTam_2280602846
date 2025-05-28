@@ -47,7 +47,7 @@ class PlayfairCipher:
 
     def playfair_decrypt(self, cipher_text, matrix):
         cipher_text = cipher_text.upper()
-        decrypted_text = ""
+        decrypted_text =""
 
         for i in range(0, len(cipher_text), 2):
             pair = cipher_text[i:i+2]
@@ -63,16 +63,15 @@ class PlayfairCipher:
         # Loại bỏ ký tự "X" nếu nó là ký tự cuối cùng và được thêm vào
         banro = ""
 
-        for i in range(0, len(decrypted_text), 2):
+        for i in range(0, len(decrypted_text)-2, 2):
             if decrypted_text[i] == decrypted_text[i+2]:
                 banro += decrypted_text[i]
             else:
-                banro += decrypted_text[i] + " " + decrypted_text[i+1]
+                banro += decrypted_text[i] + "" + decrypted_text[i+1]
 
         if decrypted_text[-1] == "X":
             banro += decrypted_text[-2]
         else:
             banro += decrypted_text[-2]
             banro += decrypted_text[-1]
-
         return banro
